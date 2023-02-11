@@ -74,9 +74,7 @@
 #txt2img_gallery img, #img2img_gallery img{
     object-fit: scale-down;
 }
-#txt2img_actions_column, #img2img_actions_column {
-	margin: 0.35rem 0.75rem 0.35rem 0;	
-}
+
 #script_list {
     padding: .625rem .75rem 0 .625rem;
 }
@@ -131,7 +129,7 @@
 
 #txt2img_actions_column, #img2img_actions_column{
     gap: 0;
-    margin-right: .75rem;
+    padding: .5em;
 }
 
 #txt2img_tools, #img2img_tools{
@@ -139,15 +137,15 @@
 }
 
 #interrogate_col{
-    min-width: 0 !important;
-    max-width: 8em !important;
-    margin-right: 1em;
+    min-width: min(120px, 100%) !important;
+    padding: .5em;
     gap: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 #interrogate, #deepbooru{
-    margin: 0em 0.25em 0.5em 0.25em;
-    min-width: 8em;
-    max-width: 8em;
+    margin-bottom: .5em;
 }
 
 #style_pos_col, #style_neg_col{
