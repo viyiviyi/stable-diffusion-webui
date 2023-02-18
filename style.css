@@ -146,6 +146,7 @@
 }
 #interrogate, #deepbooru{
     margin-bottom: .5em;
+    flex: 1;
 }
 
 #style_pos_col, #style_neg_col{
