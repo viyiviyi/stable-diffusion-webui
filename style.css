@@ -1,3 +1,6 @@
+body {
+  overscroll-behavior-y: contain;
+}
 .container {
     max-width: 100%;
 }
