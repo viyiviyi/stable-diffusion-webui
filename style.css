@@ -1,10 +1,12 @@
-body {
-  overscroll-behavior-y: contain;
-}
-.container {
-    max-width: 100%;
-}
+
 /* general gradio fixes */
+
+html{
+    overscroll-behavior-y: contain;
+}
+.container{
+  max-width: 100%;
+}
 
 :root, .dark{
     --checkbox-label-gap: 0.25em 0.1em;
@@ -254,64 +256,6 @@ button.custom-button{
 #txt2img_gallery img, #img2img_gallery img{
     object-fit: scale-down;
 }
-
-#script_list {
-    padding: .625rem .75rem 0 .625rem;
-}
-.justify-center.overflow-x-scroll {
-    justify-content: left;
-}
-
-.justify-center.overflow-x-scroll button:first-of-type {
-    margin-left: auto;
-}
-
-.justify-center.overflow-x-scroll button:last-of-type {
-    margin-right: auto;
-}
-
-[id$=_random_seed], [id$=_random_subseed], [id$=_reuse_seed], [id$=_reuse_subseed], #open_folder{
-    min-width: 2.3em;
-    height: 2.5em;
-    flex-grow: 0;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-}
-
-#hidden_element{
-    display: none;
-}
-
-[id$=_seed_row], [id$=_subseed_row]{
-    gap: 0.5rem;
-    padding: 0.6em;
-}
-
-[id$=_subseed_show_box]{
-    min-width: auto;
-    flex-grow: 0;
-}
-
-[id$=_subseed_show_box] > div{
-    border: 0;
-    height: 100%;
-}
-
-[id$=_subseed_show]{
-    min-width: auto;
-    flex-grow: 0;
-    padding: 0;
-}
-
-[id$=_subseed_show] label{
-    height: 100%;
-}
-
-#txt2img_actions_column, #img2img_actions_column{
-    gap: 0;
-    padding: .5em;
-}
-
 #txt2img_actions_column, #img2img_actions_column {
     gap: 0.5em;
 }
@@ -319,20 +263,9 @@ button.custom-button{
     gap: 0.4em;
 }
 
-#interrogate_col{
-    min-width: min(120px, 100%) !important;
-    padding: .5em;
-    gap: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-#interrogate, #deepbooru{
-    margin-bottom: .5em;
-}
 .interrogate-col{
-    min-width: 0 !important;
-    max-width: fit-content;
+    min-width: min(120px, 100%) !important;
+    /* max-width: fit-content; */
     gap: 0.5em;
 }
 .interrogate-col > button{
@@ -588,6 +521,13 @@ div.dimensions-tools{
     object-fit: contain;
     height: 100%;
 }
+@media screen and (max-width: 400px) {
+  #lightboxModal > img.modalImageFullscreen{
+    height: auto;
+    width: 100%;
+  }
+}
+
 
 .modalPrev,
 .modalNext {
