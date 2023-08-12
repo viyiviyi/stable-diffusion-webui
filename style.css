@@ -880,7 +880,7 @@ footer {
     box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
     border-radius: 0.2rem;
     position: relative;
-
+    max-width: calc(100vw - 100px);
     background-size: auto 100%;
     background-position: center;
     overflow: hidden;
