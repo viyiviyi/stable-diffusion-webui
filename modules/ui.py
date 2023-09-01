@@ -334,9 +334,8 @@ def create_ui():
         extra_tabs.__enter__()
 
         with gr.Tab("Generation", id="txt2img_generation") as txt2img_generation_tab, ResizeHandleRow(equal_height=False):
-            
             txt2img_gallery, generation_info, html_info, html_log = create_output_panel("txt2img", opts.outdir_txt2img_samples)
-            
+
             with gr.Column(variant='compact', elem_id="txt2img_settings"):
                 scripts.scripts_txt2img.prepare_ui()
 
@@ -417,6 +416,7 @@ def create_ui():
                         scripts.scripts_txt2img.setup_ui_for_section(category)
 
             hr_resolution_preview_inputs = [enable_hr, width, height, hr_scale, hr_resize_x, hr_resize_y]
+
             for component in hr_resolution_preview_inputs:
                 event = component.release if isinstance(component, gr.Slider) else component.change
 
@@ -550,9 +550,8 @@ def create_ui():
         extra_tabs.__enter__()
 
         with gr.Tab("Generation", id="img2img_generation") as img2img_generation_tab, ResizeHandleRow(equal_height=False):
-            
             img2img_gallery, generation_info, html_info, html_log = create_output_panel("img2img", opts.outdir_img2img_samples)
-            
+
             with gr.Column(variant='compact', elem_id="img2img_settings"):
                 copy_image_buttons = []
                 copy_image_destinations = {}
