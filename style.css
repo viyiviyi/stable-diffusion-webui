@@ -519,7 +519,6 @@ table.popup-table .link{
 
 /* live preview */
 .progressDiv{
-    position: absolute;
     height: 20px;
     background: #b4c0cc;
     border-radius: 3px !important;
