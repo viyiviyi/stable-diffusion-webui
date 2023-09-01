@@ -417,7 +417,6 @@ def create_ui():
                         scripts.scripts_txt2img.setup_ui_for_section(category)
 
             hr_resolution_preview_inputs = [enable_hr, width, height, hr_scale, hr_resize_x, hr_resize_y]
-
             for component in hr_resolution_preview_inputs:
                 event = component.release if isinstance(component, gr.Slider) else component.change
 
@@ -762,7 +761,6 @@ def create_ui():
 
                     if category not in {"accordions"}:
                         scripts.scripts_img2img.setup_ui_for_section(category)
-
 
             img2img_args = dict(
                 fn=wrap_gradio_gpu_call(modules.img2img.img2img, extra_outputs=[None, '', '']),

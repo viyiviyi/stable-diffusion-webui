@@ -25,8 +25,8 @@ function reportWindowSize() {
     }
 }
 
-window.addEventListener("resize", reportWindowSize);
+// window.addEventListener("resize", reportWindowSize);
 
 onUiLoaded(function() {
-    reportWindowSize();
+    // reportWindowSize();
 });
