@@ -12,6 +12,13 @@ div.gradio-image button[aria-label="Edit"] {
 
 /* general gradio fixes */
 
+html{
+    overscroll-behavior-y: contain;
+}
+.container{
+  max-width: 100%;
+}
+
 :root, .dark{
     --checkbox-label-gap: 0.25em 0.1em;
     --section-header-text-size: 12pt;
@@ -306,8 +313,8 @@ div.block.gradio-accordion {
 }
 
 .interrogate-col{
-    min-width: 0 !important;
-    max-width: fit-content;
+    min-width: min(120px, 100%) !important;
+    /* max-width: fit-content; */
     gap: 0.5em;
 }
 .interrogate-col > button{
@@ -667,6 +674,13 @@ table.popup-table .link{
     width: 100%;
     min-height: 0;
 }
+@media screen and (max-width: 400px) {
+  #lightboxModal > img.modalImageFullscreen{
+    height: auto;
+    width: 100%;
+  }
+}
+
 
 .modalPrev,
 .modalNext {
@@ -916,7 +930,7 @@ footer {
     box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
     border-radius: 0.2rem;
     position: relative;
-
+    max-width: calc(100vw - 100px);
     background-size: auto 100%;
     background-position: center;
     overflow: hidden;
