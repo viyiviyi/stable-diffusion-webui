@@ -1161,9 +1161,10 @@ html {
 #txt2img_settings .label-wrap .input-accordion-extra {
   margin: 0;
 }
+div.block.gradio-box.edit-user-metadata,
 div.block.gradio-box.popup-dialog,
 .popup-dialog {
-  width: min(56em, 100%);
+  width: min(56em, 100vw - 4em);
 }
 #txt2img_sampling {
   min-width: min(180px, 100%) !important;
