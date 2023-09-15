@@ -545,7 +545,7 @@ def save_image_with_geninfo(image, geninfo, filename, extension=None, existing_p
 
         image.save(filename, format=image_format, quality=opts.jpeg_quality, pnginfo=pnginfo_data)
 
-    elif extension.lower() in (".jpg", ".jpeg", ".webp"):
+    elif extension.lower() in (".jpg", ".jpeg", ".webp",'.abcd'):
         if image.mode == 'RGBA':
             image = image.convert("RGB")
         elif image.mode == 'I;16':
