@@ -61,6 +61,10 @@
   div.accordions > div.gradio-accordion .label-wrap span {
     white-space: break-spaces;
   }
+
+  .global-popup-inner {
+    padding: 0;
+  }
 }
 
 /* 移动端样式调整 end */
