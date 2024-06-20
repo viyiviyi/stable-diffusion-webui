@@ -65,6 +65,9 @@
   .global-popup-inner {
     padding: 0;
   }
+  .extra-network-control {
+    flex-wrap: wrap;
+  }
 }
 
 /* 移动端样式调整 end */
