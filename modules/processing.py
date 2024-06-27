@@ -441,6 +441,9 @@ class StableDiffusionProcessing:
         self.main_prompt = self.all_prompts[0]
         self.main_negative_prompt = self.all_negative_prompts[0]
 
+    def setup_hr_prompts(self):
+        pass
+
     def cached_params(self, required_prompts, steps, extra_network_data, hires_steps=None, use_old_scheduling=False):
         """Returns parameters that invalidate the cond cache if changed"""
 
@@ -907,6 +910,8 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
 
     if p.scripts is not None:
         p.scripts.process(p)
+        
+    p.setup_hr_prompts()
 
     infotexts = []
     output_images = []
@@ -1453,10 +1458,10 @@ class StableDiffusionProcessingTxt2Img(StableDiffusionProcessing):
             return
 
         if self.hr_prompt == '':
-            self.hr_prompt = self.prompt
+            self.hr_prompt = ''
 
         if self.hr_negative_prompt == '':
-            self.hr_negative_prompt = self.negative_prompt
+            self.hr_negative_prompt = ''
 
         if isinstance(self.hr_prompt, list):
             self.all_hr_prompts = self.hr_prompt
@@ -1467,9 +1472,32 @@ class StableDiffusionProcessingTxt2Img(StableDiffusionProcessing):
             self.all_hr_negative_prompts = self.hr_negative_prompt
         else:
             self.all_hr_negative_prompts = self.batch_size * self.n_iter * [self.hr_negative_prompt]
+        
 
-        self.all_hr_prompts = [shared.prompt_styles.apply_styles_to_prompt(x, self.styles) for x in self.all_hr_prompts]
-        self.all_hr_negative_prompts = [shared.prompt_styles.apply_negative_styles_to_prompt(x, self.styles) for x in self.all_hr_negative_prompts]
+    def setup_hr_prompts(self):
+        super().setup_hr_prompts()
+        
+        if not self.enable_hr:
+            return
+        if self.hr_prompt == '':
+            self.hr_prompt = self.prompt
+
+        if self.hr_negative_prompt == '':
+            self.hr_negative_prompt = self.negative_prompt
+            
+        if isinstance(self.all_prompts, list):
+            self.all_hr_prompts = self.all_prompts
+        elif isinstance(self.hr_prompt, list):
+            self.all_hr_prompts = self.hr_prompt
+        else:
+            self.all_hr_prompts = self.batch_size * self.n_iter * [self.hr_prompt]
+
+        if isinstance(self.all_negative_prompts, list):
+            self.all_hr_negative_prompts = self.all_negative_prompts
+        elif isinstance(self.hr_negative_prompt, list):
+            self.all_hr_negative_prompts = self.hr_negative_prompt
+        else:
+            self.all_hr_negative_prompts = self.batch_size * self.n_iter * [self.hr_negative_prompt]
 
     def calculate_hr_conds(self):
         if self.hr_c is not None:
