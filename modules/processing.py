@@ -1479,20 +1479,24 @@ class StableDiffusionProcessingTxt2Img(StableDiffusionProcessing):
         
         if not self.enable_hr:
             return
+        null_hr_prompt = False
         if self.hr_prompt == '':
+            null_hr_prompt = True
             self.hr_prompt = self.prompt
-
+            
+        null_hr_negative_prompt = False
         if self.hr_negative_prompt == '':
+            null_hr_negative_prompt = True
             self.hr_negative_prompt = self.negative_prompt
             
-        if isinstance(self.all_prompts, list):
+        if null_hr_prompt and isinstance(self.all_prompts, list):
             self.all_hr_prompts = self.all_prompts
         elif isinstance(self.hr_prompt, list):
             self.all_hr_prompts = self.hr_prompt
         else:
             self.all_hr_prompts = self.batch_size * self.n_iter * [self.hr_prompt]
 
-        if isinstance(self.all_negative_prompts, list):
+        if null_hr_negative_prompt and isinstance(self.all_negative_prompts, list):
             self.all_hr_negative_prompts = self.all_negative_prompts
         elif isinstance(self.hr_negative_prompt, list):
             self.all_hr_negative_prompts = self.hr_negative_prompt
