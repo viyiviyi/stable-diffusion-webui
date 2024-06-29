@@ -3,10 +3,12 @@ import gradio as gr
 
 from modules import localization, shared, scripts, util
 from modules.paths import script_path, data_path
+import time
 
+PATH_VERSION = time.time()
 
 def webpath(fn):
-    return f'file={util.truncate_path(fn)}?{os.path.getmtime(fn)}'
+    return f'file={util.truncate_path(fn)}?{PATH_VERSION}'
 
 
 def javascript_html():
